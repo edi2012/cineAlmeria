@@ -1,11 +1,10 @@
 <?php 
-    class usuarios extends CI_Model {
-        function getLogin() {
+    class Usuarios extends CI_Model {
+        function comprobarDatos($usu, $pass) {
             $usu = $this->db->get("usuarios");
-            foreach ($usu->result_array() as $row) {
-                  $list_users[] = $row;
-              }
-            return $list_users;
+            $usu = $this->db->where("nombre", $usu);
+            $usu = $this->db->where("passwd", $pass);
+            return $usu->num_rows();
         }
     }
 ?>
