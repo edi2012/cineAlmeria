@@ -4,9 +4,15 @@
             $this->load->view("login");
         }
         
-        function comprobar($usu, $pass) {
-            $num = $this->load->usuarios->getDatos($usu, $pass);
-            echo "$num";
+        function comprobar() {
+            $usu = $this->input->get_post("nombre");
+            $pass = $this->input->get_post("pass");
+            $this->load->model("usuarios");
+            $num = $this->usuarios->comprobarDatos($usu, $pass);
+            if ($num == 0) {
+                $this->load->view("login");
+            }
+            else $this->load->view("menu");
         }
     }
 ?>

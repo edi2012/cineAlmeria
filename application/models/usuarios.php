@@ -1,10 +1,8 @@
 <?php 
     class Usuarios extends CI_Model {
         function comprobarDatos($usu, $pass) {
-            $usu = $this->db->get("usuarios");
-            $usu = $this->db->where("nombre", $usu);
-            $usu = $this->db->where("passwd", $pass);
-            return $usu->num_rows();
+            $resul = $this->db->query("SELECT * FROM usuarios WHERE nombre = '$usu' AND passwd = '$pass'");
+            return $resul->num_rows();
         }
     }
 ?>
