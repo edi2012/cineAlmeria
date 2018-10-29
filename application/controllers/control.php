@@ -10,7 +10,8 @@
             $this->load->model("usuarios");
             $num = $this->usuarios->comprobarDatos($usu, $pass);
             if ($num == 0) {
-                $this->load->view("login");
+                $data["error"] = "Datos incorrectos";
+                $this->load->view("login", $data);
             }
             else $this->load->view("menu");
         }
