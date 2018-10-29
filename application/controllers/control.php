@@ -4,11 +4,19 @@
             $this->load->view("login");
         }
         
+        function show_lista() {
+            $this->load->view("lista");
+        }
+        
+        function show_insertar() {
+            $this->load->view("insertar");
+        }
+        
         function comprobar() {
             $usu = $this->input->get_post("nombre");
             $pass = $this->input->get_post("pass");
             $this->load->model("usuarios");
-            $num = $this->usuarios->comprobarDatos($usu, $pass);
+            $num = $this->usuarios->comprobar_datos($usu, $pass);
             if ($num == 0) {
                 $data["error"] = "Datos incorrectos";
                 $this->load->view("login", $data);
