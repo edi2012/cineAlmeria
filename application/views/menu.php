@@ -1,12 +1,12 @@
 <?php
-    $listaLugares = $data["listaLugares"];
-    $lsitaPeliculas = $data["listaPeliculas"];
-    $listaLocalizaciones = $data["listaLocalizaciones"];
+    $listaLugares = $listaLugares;
+    $lsitaPeliculas = $listaPeliculas;
+    $listaLocalizaciones = $listaLocalizaciones;
 
 echo "<h1>Almeria, tierra de cine</h1>";
             
-if (isset($data["msjUsu"])) {
-    echo "<h3 style='color:red'>".$data["msjUsu"]."</h3>";
+if (isset($data["error"])) {
+    echo "<h3 style='color:red'>".$error."</h3>";
 }
 
 //-------------------------------------------------------------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ echo "
             <th>Longitud</th>
             <th>Latitud</th>
         </tr>";
-foreach ($listaLugares as $lugares)
+/*foreach ($listaLugares as $lugares)*/
 echo "
         <form method='post' action='index.php'>
         <tr>

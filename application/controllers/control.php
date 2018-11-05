@@ -16,6 +16,9 @@
                 $this->load->view("plantilla", $data);
             }
             else {
+                $data["listaLugares"] = "";
+                $data["listaPeliculas"] = "";
+                $data["listaLocalizaciones"] = "";
                 $data["nombre_vista"] = "menu";
                 $this->load->view("plantilla", $data);
             }
