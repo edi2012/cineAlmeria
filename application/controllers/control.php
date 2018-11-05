@@ -1,15 +1,8 @@
 <?php
     class Control extends CI_Controller {
         function index() {
-            $this->load->view("login");
-        }
-        
-        function show_lista() {
-            $this->load->view("lista");
-        }
-        
-        function show_insertar() {
-            $this->load->view("insertar");
+            $data["nombre_vista"] = "login";
+            $this->load->view("plantilla", $data);
         }
         
         function comprobar() {
@@ -18,10 +11,13 @@
             $this->load->model("usuarios");
             $num = $this->usuarios->comprobar_datos($usu, $pass);
             if ($num == 0) {
+                $data["nombre_vista"] = "login";
                 $data["error"] = "Datos incorrectos";
-                $this->load->view("login", $data);
+                $this->load->view("plantilla", $data);
             }
-            else $this->load->view("menu");
+            else {
+                $data["nombre_vista"] = "menu";
+                $this->load->view("plantilla", $data);
+            }
         }
     }
-?>
