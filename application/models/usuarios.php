@@ -6,8 +6,21 @@
         }
         
         function get_tablas() {
-            $resul = $this->db->query("SELECT nombre, descripcion, longitud, latitud FROM lugares");
-            $resul = $this->db->query("SELECT titulo, anio, pais, cartel FROM peliculas");
-            $resul = $this->db->query("SELECT descripcion, fotografia, id_lugar, id_pelicula FROM localizaciones");
+            $r1 = $this->db->query("SELECT nombre, descripcion, longitud, latitud FROM lugares");
+            $resul["lugares"] = array();
+            foreach ($r1->result_array() as $fila) {
+                $resul["lugares"][] = $fila;
+            }
+            $r2 = $this->db->query("SELECT titulo, anio, pais, cartel FROM peliculas");
+            $resul["peliculas"] = array();
+            foreach ($r2->result_array() as $fila) {
+                $resul["peliculas"][] = $fila;
+            }
+            $r3 = $this->db->query("SELECT descripcion, fotografia, id_lugar, id_pelicula FROM localizaciones");
+            $resul["localizaciones"] = array();
+            foreach ($r3->result_array() as $fila) {
+                $resul["localizaciones"][] = $fila;
+            }
+            return $resul;
         }
     }

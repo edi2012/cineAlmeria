@@ -1,7 +1,4 @@
 <?php
-    $listaLugares = $listaLugares;
-    $lsitaPeliculas = $listaPeliculas;
-    $listaLocalizaciones = $listaLocalizaciones;
 
 echo "<h1>Almeria, tierra de cine</h1>";
             
@@ -21,14 +18,14 @@ echo "
             <th>Longitud</th>
             <th>Latitud</th>
         </tr>";
-/*foreach ($listaLugares as $lugares)*/
+foreach ($tablas["lugares"] as $lugares)
 echo "
         <form method='post' action='index.php'>
         <tr>
-            <td><input type='text' name='nombLug' value='' /></td>
-            <td><input type='text' name='descLug' value='' /></td>
-            <td><input type='text' name='longLug' value='' /></td>
-            <td><input type='text' name='latLug' value='' /></td>
+            <td><input type='text' name='nombLug' value='" .$lugares["nombre"]. "' /></td>
+            <td><input type='text' name='descLug' value='" .$lugares["descripcion"]. "' /></td>
+            <td><input type='text' name='longLug' value='" .$lugares["longitud"]. "' /></td>
+            <td><input type='text' name='latLug' value='" .$lugares["latitud"]. "' /></td>
             <td><a class='boton' href='#'>Eliminar</a></td>
             <input type='hidden' name='idusuario' value=''/>
             <input type='hidden' name='do' value='modUser'/>
@@ -62,15 +59,14 @@ echo "
             <th>Pais</th>
             <th>Cartel</th>
         </tr>";
-/* for ($i = 0; $i < count($list); $i++) {
-                $user = $list[$i];*/
+foreach ($tablas["peliculas"] as $peliculas)
 echo " 
         <form method='post' action='index.php'>
         <tr>
-            <td><input type='text' name='titPel' value='' /></td>
-            <td><input type='text' name='anioPel' value='' /></td>
-            <td><input type='text' name='paisPel' value='' /></td>
-            <td><input type='text' name='cartPel' value='' /></td>
+            <td><input type='text' name='titPel' value='" .$peliculas["titulo"]. "' /></td>
+            <td><input type='text' name='anioPel' value='" .$peliculas["anio"]. "' /></td>
+            <td><input type='text' name='paisPel' value='" .$peliculas["pais"]. "' /></td>
+            <td>img('" .$peliculas["cartel"]. "')<input type='text' name='cartPel' value='' /></td>
             <td><a class='boton' href='#'>Eliminar</a></td>
             <input type='hidden' name='idusuario' value=''/>
             <input type='hidden' name='do' value='modUser'/>

@@ -16,11 +16,13 @@
                 $this->load->view("plantilla", $data);
             }
             else {
-                $data["listaLugares"] = "";
-                $data["listaPeliculas"] = "";
-                $data["listaLocalizaciones"] = "";
+                $data["tablas"] = $this->usuarios->get_tablas();
                 $data["nombre_vista"] = "menu";
                 $this->load->view("plantilla", $data);
             }
+        }
+        
+        function insertLugar($nombre, $descripcion, $longitud, $latitud) {
+            
         }
     }
