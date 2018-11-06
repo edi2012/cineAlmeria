@@ -23,7 +23,7 @@ echo "
         <form method='post' action='index.php'>
         <tr>
             <td><input type='text' name='nombLug' value='" .$lugares["nombre"]. "' /></td>
-            <td><input type='text' name='descLug' value='" .$lugares["descripcion"]. "' /></td>
+            <td><textarea name='descLug'>" .$lugares["descripcion"]. "</textarea></td>
             <td><input type='text' name='longLug' value='" .$lugares["longitud"]. "' /></td>
             <td><input type='text' name='latLug' value='" .$lugares["latitud"]. "' /></td>
             <td><a class='boton' href='#'>Eliminar</a></td>
@@ -37,7 +37,7 @@ echo "
         <form method='post' action='index.php'>
         <tr>
             <td><input type='text' name='nombInsLug' /></td>
-            <td><input type='text' name='descInsLug' /></td>
+            <td><textarea type='text' name='descInsLug'></textarea></td>
             <td><input type='text' name='longInsLug' /></td>
             <td><input type='text' name='latInsLug' /></td>
             <input type='hidden' name='do' value='insertUser'/>
@@ -59,20 +59,22 @@ echo "
             <th>Pais</th>
             <th>Cartel</th>
         </tr>";
+
 foreach ($tablas["peliculas"] as $peliculas)
-echo " 
-        <form method='post' action='index.php'>
-        <tr>
-            <td><input type='text' name='titPel' value='" .$peliculas["titulo"]. "' /></td>
-            <td><input type='text' name='anioPel' value='" .$peliculas["anio"]. "' /></td>
-            <td><input type='text' name='paisPel' value='" .$peliculas["pais"]. "' /></td>
-            <td>img('" .$peliculas["cartel"]. "')<input type='text' name='cartPel' value='' /></td>
-            <td><a class='boton' href='#'>Eliminar</a></td>
-            <input type='hidden' name='idusuario' value=''/>
-            <input type='hidden' name='do' value='modUser'/>
-            <td><input type='submit' value='Modificar' /></td>
-        </tr>
-        </form>";
+    $img = '<img width="50" src="data:image/jpeg;base64,'.base64_encode($peliculas["cartel"]).'"/>';
+    echo " 
+            <form method='post' action='index.php'>
+            <tr>
+                <td><input type='text' name='titPel' value='" .$peliculas["titulo"]. "' /></td>
+                <td><input type='text' name='anioPel' value='" .$peliculas["anio"]. "' /></td>
+                <td><input type='text' name='paisPel' value='" .$peliculas["pais"]. "' /></td>
+                <td align='center' >$img</td>
+                <td><a class='boton' href='#'>Eliminar</a></td>
+                <input type='hidden' name='idusuario' value=''/>
+                <input type='hidden' name='do' value='modUser'/>
+                <td><input type='submit' value='Modificar' /></td>
+            </tr>
+            </form>";
         
 echo "  
         <form method='post' action='index.php'>   
@@ -100,27 +102,27 @@ echo "
             <th>Lugar</th>
             <th>Pelicula</th>
         </tr>";
-/* for ($i = 0; $i < count($list); $i++) {
-                $user = $list[$i];*/
-echo "
-        <form method='post' action='index.php'>
-        <tr>
-            <td><input type='text' name='nombMod' value='' /></td>
-            <td><input type='text' name='apeMod' value='' /></td>
-            <td><input type='text' name='emailMod' value='' /></td>
-            <td><input type='text' name='nickMod' value='' /></td>
-            <td><a class='boton' href='#'>Eliminar</a></td>
-            <input type='hidden' name='idusuario' value=''/>
-            <input type='hidden' name='do' value='modUser'/>
-            <td><input type='submit' value='Modificar' /></td>
-        </tr>
-        </form>";
+foreach ($tablas["localizaciones"] as $localizaciones)
+    $img = '<img width="50" src="data:image/jpeg;base64,'.base64_encode($localizaciones["fotografia"]).'"/>';
+    echo "
+            <form method='post' action='index.php'>
+            <tr>
+                <td><textarea type='textarea'>" .$localizaciones["descripcion"]. "</textarea></td>
+                <td align='center'>$img</td>
+                <td><input type='text' name='lugLoc' value='" .$localizaciones["id_lugar"]. "' /></td>
+                <td><input type='text' name='pelLoc' value='" .$localizaciones["id_pelicula"]. "' /></td>
+                <td><a class='boton' href='#'>Eliminar</a></td>
+                <input type='hidden' name='idusuario' value=''/>
+                <input type='hidden' name='do' value='modUser'/>
+                <td><input type='submit' value='Modificar' /></td>
+            </tr>
+            </form>";
 
 echo "
         <form method='post' action='index.php'>
             <tr>
-                <td><input type='text' name='nomb1' /></td>
-                <td><input type='text' name='ape1' /></td>
+                <td><textarea name='descInsLoc'></textarea></td>
+                <td><input type='text' name='' /></td>
                 <td><input type='text' name='email1' /></td>
                 <td><input type='text' name='nick1' /></td>
                 <input type='hidden' name='do' value='insertUser'/>
