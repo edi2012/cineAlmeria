@@ -1,5 +1,5 @@
 <?php
-    class Control extends CI_Controller {
+    class Control extends Security {
         function index() {
             $data["nombre_vista"] = "login";
             $this->load->view("plantilla", $data);
