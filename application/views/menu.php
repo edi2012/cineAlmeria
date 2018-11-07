@@ -26,10 +26,13 @@ echo "
             <td><textarea name='descLug'>" .$lugares["descripcion"]. "</textarea></td>
             <td><input type='text' name='longLug' value='" .$lugares["longitud"]. "' /></td>
             <td><input type='text' name='latLug' value='" .$lugares["latitud"]. "' /></td>
-            <td><a class='boton' href='#'>Eliminar</a></td>
-            <input type='hidden' name='idusuario' value=''/>
+            <input type='hidden' name='iduLug' value='" .$lugares["id"]. "'/>
             <input type='hidden' name='do' value='modUser'/>
             <td><input type='submit' value='Modificar' /></td>
+        </form>
+        <form method='post' action='index.php'>
+            <input type='hidden' name='do' value='" .$lugares["id"]. "'/>
+            <td><input type='submit' value='Eliminar' /></td>
         </tr>
         </form>";
                 
@@ -69,10 +72,13 @@ foreach ($tablas["peliculas"] as $peliculas)
                 <td><input type='text' name='anioPel' value='" .$peliculas["anio"]. "' /></td>
                 <td><input type='text' name='paisPel' value='" .$peliculas["pais"]. "' /></td>
                 <td align='center' >$img</td>
-                <td><a class='boton' href='#'>Eliminar</a></td>
                 <input type='hidden' name='idusuario' value=''/>
                 <input type='hidden' name='do' value='modUser'/>
                 <td><input type='submit' value='Modificar' /></td>
+                </form>
+            <form method='post' action='index.php'>
+                <input type='hidden' name='do' value='" .$peliculas["id"]. "'/>
+                <td><input type='submit' value='Eliminar' /></td>
             </tr>
             </form>";
         
@@ -111,10 +117,13 @@ foreach ($tablas["localizaciones"] as $localizaciones)
                 <td align='center'>$img</td>
                 <td><input type='text' name='lugLoc' value='" .$localizaciones["id_lugar"]. "' /></td>
                 <td><input type='text' name='pelLoc' value='" .$localizaciones["id_pelicula"]. "' /></td>
-                <td><a class='boton' href='#'>Eliminar</a></td>
                 <input type='hidden' name='idusuario' value=''/>
                 <input type='hidden' name='do' value='modUser'/>
                 <td><input type='submit' value='Modificar' /></td>
+                </form>
+            <form method='post' action='index.php'>
+                <input type='hidden' name='do' value='" .$localizaciones["id"]. "'/>
+                <td><input type='submit' value='Eliminar' /></td>
             </tr>
             </form>";
 
