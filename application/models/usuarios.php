@@ -38,9 +38,9 @@
                 'latitud' => $latitud
             );
             
-            $resultado = $this->db->insert('lugares', $data);
+            $this->db->insert('lugares', $data);
             
-            return $resultado->affected_rows();
+            return $this->db->affected_rows();
         }
         
         function insert_pelicula($titulo, $anio, $pais, $cartel) {
@@ -51,8 +51,8 @@
                 'cartel' => $cartel
             );
             
-            $resultado = $this->db->insert('peliculas', $data);
+            $this->db->insert('peliculas', $data);
             
-            return $resultado->affected_rows();
+            return $this->db->affected_rows();
         }
     }
