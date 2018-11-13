@@ -31,8 +31,23 @@
             }
         }
         
-        function insert_lugar($nombre, $descripcion, $longitud, $latitud) {
-            
+        function confirm_insert_lugar() {
+            $nombre = $_REQUEST["nombInsLug"];
+            $descripcion = $_REQUEST["descInsLug"];
+            $longitud = $_REQUEST["longInsLug"];
+            $latitud = $_REQUEST["latInsLug"];
+            $num = $this->usuarios->insert_lugar($nombre, $descripcion, $longitud, $latitud);
+            if ($num != 0) {
+                $data["tablas"] = $this->usuarios->get_tablas();
+                $data["nombre_vista"] = "menu";
+                $this->load->view("plantilla", $data);
+            }
+            else {
+                $data["nombre_vista"] = "menu";
+                $data["tablas"] = $this->usuarios->get_tablas();
+                $data["error"] = "Datos introducidos incorrectos";
+                $this->load->view("plantilla", $data);
+            }
         }
         
         function cerrar_sesion() {

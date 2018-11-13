@@ -20,7 +20,7 @@ echo "
         </tr>";
 foreach ($tablas["lugares"] as $lugares)
 echo "
-        <form method='post' action='index.php'>
+        <form method='post' action='index.php/comprobar_insert_lugar'>
         <tr>
             <td><input type='text' name='nombLug' value='" .$lugares["nombre"]. "' /></td>
             <td><textarea name='descLug'>" .$lugares["descripcion"]. "</textarea></td>
@@ -37,13 +37,12 @@ echo "
         </form>";
                 
 echo "
-        <form method='post' action='index.php'>
+        <form method='post' action='confirm_insert_lugar'>
         <tr>
             <td><input type='text' name='nombInsLug' /></td>
             <td><textarea type='text' name='descInsLug'></textarea></td>
             <td><input type='text' name='longInsLug' /></td>
             <td><input type='text' name='latInsLug' /></td>
-            <input type='hidden' name='do' value='insertUser'/>
             <td><input type='submit' value='Insertar' /></td>
         </tr>
         </form>
@@ -64,7 +63,7 @@ echo "
         </tr>";
 
 foreach ($tablas["peliculas"] as $peliculas)
-    $img = '<img width="50" src="data:image/jpeg;base64,'.base64_encode($peliculas["cartel"]).'"/>';
+    $img = '<input type="image" width="50"¡¡ src="data:image/jpeg;base64,'.base64_encode($peliculas["cartel"]).'"/>';
     echo " 
             <form method='post' action='index.php'>
             <tr>
@@ -109,7 +108,7 @@ echo "
             <th>Pelicula</th>
         </tr>";
 foreach ($tablas["localizaciones"] as $localizaciones)
-    $img = '<img width="50" src="data:image/jpeg;base64,'.base64_encode($localizaciones["fotografia"]).'"/>';
+    $img = '<input type="image" width="50" src="data:image/jpeg;base64,'.base64_encode($localizaciones["fotografia"]).'"/>';
     echo "
             <form method='post' action='index.php'>
             <tr>
@@ -131,7 +130,7 @@ echo "
         <form method='post' action='index.php'>
             <tr>
                 <td><textarea name='descInsLoc'></textarea></td>
-                <td><input type='text' name='' /></td>
+                <td><input type='file' name='descInsImg' /></td>
                 <td><input type='text' name='email1' /></td>
                 <td><input type='text' name='nick1' /></td>
                 <input type='hidden' name='do' value='insertUser'/>

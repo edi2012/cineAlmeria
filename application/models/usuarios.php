@@ -29,4 +29,17 @@
             }
             return $resul;
         }
+        
+        function insert_lugar($nombre, $descripcion, $longitud, $latitud) {
+            $data = array(
+                'nombre' => $nombre,
+                'descripcion' => $descripcion,
+                'longitud' => $longitud,
+                'latitud' => $latitud
+            );
+            
+            $resultado = $this->db->insert('lugares', $data);
+            
+            return $resultado->affected_rows;
+        }
     }
