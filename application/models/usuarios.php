@@ -40,6 +40,19 @@
             
             $resultado = $this->db->insert('lugares', $data);
             
-            return $resultado->affected_rows;
+            return $resultado->affected_rows();
+        }
+        
+        function insert_pelicula($titulo, $anio, $pais, $cartel) {
+            $data = array(
+                'titulo' => $titulo,
+                'anio' => $anio,
+                'pais' => $pais,
+                'cartel' => $cartel
+            );
+            
+            $resultado = $this->db->insert('peliculas', $data);
+            
+            return $resultado->affected_rows();
         }
     }

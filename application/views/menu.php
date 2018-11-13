@@ -63,7 +63,7 @@ echo "
         </tr>";
 
 foreach ($tablas["peliculas"] as $peliculas)
-    $img = '<input type="image" width="50"¡¡ src="data:image/jpeg;base64,'.base64_encode($peliculas["cartel"]).'"/>';
+    $img = '<input type="image" width="50" src="data:image/jpeg;base64,'.base64_encode($peliculas["cartel"]).'"/>';
     echo " 
             <form method='post' action='index.php'>
             <tr>
@@ -87,7 +87,7 @@ echo "
             <td><input type='text' name='titInsPel' /></td>
             <td><input type='text' name='anioInsPel' /></td>
             <td><input type='text' name='paisInsPel' /></td>
-            <td><input type='text' name='cartInsPel' /></td>
+            <td><input type='file' name='cartInsPel' /></td>
             <input type='hidden' name='do' value='insertUser'/>
             <td><input type='submit' value='Insertar' /></td>
         </tr>
