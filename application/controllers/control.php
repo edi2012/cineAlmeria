@@ -70,11 +70,11 @@
         }
         
         function confirm_insert_localizaciones() {
-            $nombre = $_REQUEST["nombInsLug"];
-            $descripcion = $_REQUEST["descInsLug"];
-            $longitud = $_REQUEST["longInsLug"];
-            $latitud = $_REQUEST["latInsLug"];
-            $num = $this->usuarios->insert_lugar($nombre, $descripcion, $longitud, $latitud);
+            $descripcion = $_REQUEST["descInsLoc"];
+            $foto = $_REQUEST["fotInsLoc"];
+            $lugar = $_REQUEST["lugar"];
+            $pelicula = $_REQUEST["pelicula"];
+            $num = $this->usuarios->insert_localizacion($descripcion, $foto, $lugar, $pelicula);
             if ($num != 0) {
                 $data["tablas"] = $this->usuarios->get_tablas();
                 $data["nombre_vista"] = "menu";
@@ -134,6 +134,34 @@
                 $data["error"] = "Datos introducidos incorrectos";
                 $this->load->view("plantilla", $data);
             }
+        }
+        
+        function do_upload()
+        {
+                $config['upload_path']          = './uploads/';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $config['max_width']            = 1024;
+                $config['max_height']           = 768;
+
+                $this->load->library('upload' ,$config);
+
+                if (!$this->upload->do_upload('userfile'))
+                {
+                        $data["nombre_vista"] = "menu";
+                        $data["tablas"] = $this->usuarios->get_tablas();
+                        $data["error"] = "Datos introducidos incorrectos";
+                    
+                        $this->load->view('plantilla', $data);
+                }
+                else
+                {
+                        $data["nombre_vista"] = "menu";
+                        $data["tablas"] = $this->usuarios->get_tablas();
+                        $data["error"] = "Todo ok";
+                        
+                        $this->load->view('plantilla', $data);
+                }
+                
         }
         
         function cerrar_sesion() {

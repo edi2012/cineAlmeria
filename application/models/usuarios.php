@@ -56,6 +56,19 @@
             return $this->db->affected_rows();
         }
         
+        function insert_localizacion($descripcion, $fotografia, $id_lugar, $id_pelicula) {
+            $data = array(
+                'descripcion' => $descripcion,
+                'fotografia' => $fotografia,
+                'id_lugar' => $id_lugar,
+                'id_pelicula' => $id_pelicula
+            );
+            
+            $this->db->insert('localizaciones', $data);
+            
+            return $this->db->affected_rows();
+        }
+        
         function delete_lugar($id) {
             $this->db->delete('lugares', array('id' => $id));
             

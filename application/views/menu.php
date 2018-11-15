@@ -103,10 +103,10 @@ echo "
             <th>Lugar</th>
             <th>Pelicula</th>
         </tr>";
-foreach ($tablas["localizaciones"] as $localizaciones)
+foreach ($tablas["localizaciones"] as $localizaciones) {
     $img = '<input type="image" width="50" src="data:image/jpeg;base64,'.base64_encode($localizaciones["fotografia"]).'"/>';
+    echo form_open_multipart('control/do_upload');
     echo "
-            <form method='post' action='index.php'>
             <tr>
                 <td><textarea type='textarea'>" .$localizaciones["descripcion"]. "</textarea></td>
                 <td align='center'>$img</td>
@@ -119,14 +119,15 @@ foreach ($tablas["localizaciones"] as $localizaciones)
                 <td><input type='submit' value='Eliminar' /></td>
             </tr>
             </form>";
+    }
 
 echo "
-        <form method='post' action='index.php'>
+        <form method='post' action='confirm_insert_localizaciones'>
             <tr>
                 <td><textarea name='descInsLoc'></textarea></td>
-                <td><input type='file' name='descInsImg' /></td>
-                <td><input type='text' name='email1' /></td>
-                <td><input type='text' name='nick1' /></td>
+                <td><input type='file' name='userfile' size='20' /></td>
+                <td><input type='text' name='lugar' /></td>
+                <td><input type='text' name='pelicula' /></td>
                 <input type='hidden' name='do' value='insertUser'/>
                 <td><input type='submit' value='Insertar' /></td>
             </tr>
