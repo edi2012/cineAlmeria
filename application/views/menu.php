@@ -20,14 +20,11 @@ echo "
         </tr>";
 foreach ($tablas["lugares"] as $lugares)
 echo "
-        <form method='post' action='index.php/comprobar_insert_lugar'>
         <tr>
-            <td><input type='text' name='nombLug' value='" .$lugares["nombre"]. "' /></td>
-            <td><textarea name='descLug'>" .$lugares["descripcion"]. "</textarea></td>
-            <td><input type='text' name='longLug' value='" .$lugares["longitud"]. "' /></td>
-            <td><input type='text' name='latLug' value='" .$lugares["latitud"]. "' /></td>
-            <td><input type='submit' value='Modificar' /></td>
-        </form>
+            <td><input type='text' name='nombLug' value='" .$lugares["nombre"]. "' disabled /></td>
+            <td><textarea name='descLug' disabled>" .$lugares["descripcion"]. "</textarea></td>
+            <td><input type='text' name='longLug' value='" .$lugares["longitud"]. "' disabled /></td>
+            <td><input type='text' name='latLug' value='" .$lugares["latitud"]. "' disabled /></td>
         <form method='post' action='confirm_delete_lugares'>
             <input type='hidden' name='idLug' value='" .$lugares["id"]. "'/>
             <td><input type='submit' value='Eliminar' /></td>
@@ -62,14 +59,11 @@ echo "
 
 foreach ($tablas["peliculas"] as $peliculas) {
     echo " 
-            <form method='post' action='index.php'>
             <tr>
-                <td><input type='text' name='titPel' value='" .$peliculas["titulo"]. "' /></td>
-                <td><input type='text' name='anioPel' value='" .$peliculas["anio"]. "' /></td>
-                <td><input type='text' name='paisPel' value='" .$peliculas["pais"]. "' /></td>
-                <td align='center' ><img width='50' src='" .$peliculas["cartel"]. "' /></td>
-                <td><input type='submit' value='Modificar' /></td>
-                </form>
+                <td><input type='text' name='titPel' value='" .$peliculas["titulo"]. "' disabled /></td>
+                <td><input type='text' name='anioPel' value='" .$peliculas["anio"]. "' disabled /></td>
+                <td><input type='text' name='paisPel' value='" .$peliculas["pais"]. "' disabled /></td>
+                <td align='center' ><img width='50' src='" .$peliculas["cartel"]. "' disabled /></td>
             <form method='post' action='confirm_delete_peliculas'>
                 <input type='hidden' name='idPel' value='" .$peliculas["id"]. "'/>
                 <td><input type='submit' value='Eliminar' /></td>
@@ -105,13 +99,10 @@ echo "
 foreach ($tablas["localizaciones"] as $localizaciones) {    
     echo "
             <tr>
-            <form method='post' action='index.php'>
-                <td><textarea type='textarea'>" .$localizaciones["descripcion"]. "</textarea></td>
-                <td align='center'><img width='50' src='" .$localizaciones["fotografia"]. "' /></td>
-                <td><input type='text' name='lugLoc' value='" .$localizaciones["id_lugar"]. "' /></td>
-                <td><input type='text' name='pelLoc' value='" .$localizaciones["id_pelicula"]. "' /></td>
-                <td><input type='submit' value='Modificar' /></td>
-                </form>
+                <td><textarea type='textarea' disabled>" .$localizaciones["descripcion"]. "</textarea></td>
+                <td align='center'><img width='50' src='" .$localizaciones["fotografia"]. "' disabled /></td>
+                <td><input type='text' name='lugLoc' value='" .$localizaciones["id_lugar"]. "' disabled /></td>
+                <td><input type='text' name='pelLoc' value='" .$localizaciones["id_pelicula"]. "' disabled /></td>
             <form method='post' action='confirm_delete_localizaciones'>
                 <input type='hidden' name='idLoc' value='" .$localizaciones["id"]. "'/>
                 <td><input type='submit' value='Eliminar' /></td>
@@ -123,12 +114,20 @@ echo "
             <tr>
                 <td><textarea name='descInsLoc'></textarea></td>
                 <td><input type='file' name='userfile' size='20' /></td>
-                <td><input type='text' name='lugar' /></td>
-                <td><input type='text' name='pelicula' /></td>
-                <input type='hidden' name='do' value='insertUser'/>
+                <td>
+                    <select name='lugar'>";
+                        foreach ($tablas["lugares"] as $lugares)
+                            echo "<option value='" .$lugares["id"]. "'>" .$lugares["nombre"]. "</option>";
+                echo "</select>
+                </td>
+                <td>
+                    <select name='pelicula'>";
+                        foreach ($tablas["peliculas"] as $peliculas)
+                            echo "<option value='" .$peliculas["id"]. "'>" .$peliculas["titulo"]. "</option>";
+                echo "</select>
+                </td>
                 <td><input type='submit' value='Insertar' /></td>
             </tr>
         </form>
     </table>
-</div>"; ?>
-<img src="C:\xampp\htdocs\cineAlmeria\uploads\IJUltimaCruzada.jpg"/>
+</div>";
