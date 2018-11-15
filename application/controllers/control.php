@@ -51,11 +51,17 @@
         }
         
         function confirm_insert_peliculas() {
+            $config['upload_path']          = './uploads/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
+            $this->load->library('upload' ,$config);
+            $this->upload->do_upload('userfile');
             $titulo = $_REQUEST["titInsPel"];
             $anio = $_REQUEST["anioInsPel"];
             $pais = $_REQUEST["paisInsPel"];
-            $cartel = $_REQUEST["cartInsPel"];
-            $num = $this->usuarios->insert_pelicula($titulo, $anio, $pais, $cartel);
+            $cartel = "uploads\\" . $this->upload->data('file_name');
+            $num = $this->usuarios->insert_pelicula($titulo, $anio, $pais, base_url($cartel));
             if ($num != 0) {
                 $data["tablas"] = $this->usuarios->get_tablas();
                 $data["nombre_vista"] = "menu";
@@ -70,11 +76,17 @@
         }
         
         function confirm_insert_localizaciones() {
+            $config['upload_path']          = './uploads/';
+            $config['allowed_types']        = 'gif|jpg|png';
+            $config['max_width']            = 1024;
+            $config['max_height']           = 768;
+            $this->load->library('upload' ,$config);
+            $this->upload->do_upload('userfile');
             $descripcion = $_REQUEST["descInsLoc"];
-            $foto = $_REQUEST["fotInsLoc"];
+            $foto = "uploads\\" . $this->upload->data('file_name');
             $lugar = $_REQUEST["lugar"];
             $pelicula = $_REQUEST["pelicula"];
-            $num = $this->usuarios->insert_localizacion($descripcion, $foto, $lugar, $pelicula);
+            $num = $this->usuarios->insert_localizacion($descripcion, base_url($foto), $lugar, $pelicula);
             if ($num != 0) {
                 $data["tablas"] = $this->usuarios->get_tablas();
                 $data["nombre_vista"] = "menu";
@@ -134,34 +146,6 @@
                 $data["error"] = "Datos introducidos incorrectos";
                 $this->load->view("plantilla", $data);
             }
-        }
-        
-        function do_upload()
-        {
-                $config['upload_path']          = './uploads/';
-                $config['allowed_types']        = 'gif|jpg|png';
-                $config['max_width']            = 1024;
-                $config['max_height']           = 768;
-
-                $this->load->library('upload' ,$config);
-
-                if (!$this->upload->do_upload('userfile'))
-                {
-                        $data["nombre_vista"] = "menu";
-                        $data["tablas"] = $this->usuarios->get_tablas();
-                        $data["error"] = "Datos introducidos incorrectos";
-                    
-                        $this->load->view('plantilla', $data);
-                }
-                else
-                {
-                        $data["nombre_vista"] = "menu";
-                        $data["tablas"] = $this->usuarios->get_tablas();
-                        $data["error"] = "Todo ok";
-                        
-                        $this->load->view('plantilla', $data);
-                }
-                
         }
         
         function cerrar_sesion() {

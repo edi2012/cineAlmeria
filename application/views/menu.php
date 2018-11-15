@@ -61,14 +61,13 @@ echo "
         </tr>";
 
 foreach ($tablas["peliculas"] as $peliculas) {
-    $img = '<img width="50" src="data:image/jpeg;base64,'.base64_encode($peliculas["cartel"]).'"/>';
     echo " 
             <form method='post' action='index.php'>
             <tr>
                 <td><input type='text' name='titPel' value='" .$peliculas["titulo"]. "' /></td>
                 <td><input type='text' name='anioPel' value='" .$peliculas["anio"]. "' /></td>
                 <td><input type='text' name='paisPel' value='" .$peliculas["pais"]. "' /></td>
-                <td align='center' >$img</td>
+                <td align='center' ><img width='50' src='" .$peliculas["cartel"]. "' /></td>
                 <td><input type='submit' value='Modificar' /></td>
                 </form>
             <form method='post' action='confirm_delete_peliculas'>
@@ -78,13 +77,13 @@ foreach ($tablas["peliculas"] as $peliculas) {
             </form>";
     }
         
+echo form_open_multipart('control/confirm_insert_peliculas');
 echo "  
-        <form method='post' action='confirm_insert_peliculas'>   
         <tr>
             <td><input type='text' name='titInsPel' /></td>
             <td><input type='text' name='anioInsPel' /></td>
             <td><input type='text' name='paisInsPel' /></td>
-            <td><input type='file' name='cartInsPel' /></td>
+            <td><input type='file' name='userfile' size='20' /></td>
             <td><input type='submit' value='Insertar' /></td>
         </tr>
         </form>
@@ -103,13 +102,12 @@ echo "
             <th>Lugar</th>
             <th>Pelicula</th>
         </tr>";
-foreach ($tablas["localizaciones"] as $localizaciones) {
-    $img = '<input type="image" width="50" src="data:image/jpeg;base64,'.base64_encode($localizaciones["fotografia"]).'"/>';
-    echo form_open_multipart('control/do_upload');
+foreach ($tablas["localizaciones"] as $localizaciones) {    
     echo "
             <tr>
+            <form method='post' action='index.php'>
                 <td><textarea type='textarea'>" .$localizaciones["descripcion"]. "</textarea></td>
-                <td align='center'>$img</td>
+                <td align='center'><img width='50' src='" .$localizaciones["fotografia"]. "' /></td>
                 <td><input type='text' name='lugLoc' value='" .$localizaciones["id_lugar"]. "' /></td>
                 <td><input type='text' name='pelLoc' value='" .$localizaciones["id_pelicula"]. "' /></td>
                 <td><input type='submit' value='Modificar' /></td>
@@ -120,9 +118,8 @@ foreach ($tablas["localizaciones"] as $localizaciones) {
             </tr>
             </form>";
     }
-
+echo form_open_multipart('control/confirm_insert_localizaciones');
 echo "
-        <form method='post' action='confirm_insert_localizaciones'>
             <tr>
                 <td><textarea name='descInsLoc'></textarea></td>
                 <td><input type='file' name='userfile' size='20' /></td>
@@ -133,4 +130,5 @@ echo "
             </tr>
         </form>
     </table>
-</div>";
+</div>"; ?>
+<img src="C:\xampp\htdocs\cineAlmeria\uploads\IJUltimaCruzada.jpg"/>
