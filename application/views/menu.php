@@ -117,13 +117,13 @@ echo "
                 <td>
                     <select name='lugar'>";
                         foreach ($tablas["lugares"] as $lugares)
-                            echo "<option value='" .$lugares["id"]. "'>" .$lugares["nombre"]. "</option>";
+                            echo "<option value='" .$lugares["nombre"]. "'>" .$lugares["nombre"]. "</option>";
                 echo "</select>
                 </td>
                 <td>
                     <select name='pelicula'>";
                         foreach ($tablas["peliculas"] as $peliculas)
-                            echo "<option value='" .$peliculas["id"]. "'>" .$peliculas["titulo"]. "</option>";
+                            echo "<option value='" .$peliculas["titulo"]. "'>" .$peliculas["titulo"]. "</option>";
                 echo "</select>
                 </td>
                 <td><input type='submit' value='Insertar' /></td>
