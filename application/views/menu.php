@@ -26,12 +26,10 @@ echo "
             <td><textarea name='descLug'>" .$lugares["descripcion"]. "</textarea></td>
             <td><input type='text' name='longLug' value='" .$lugares["longitud"]. "' /></td>
             <td><input type='text' name='latLug' value='" .$lugares["latitud"]. "' /></td>
-            <input type='hidden' name='iduLug' value='" .$lugares["id"]. "'/>
-            <input type='hidden' name='do' value='modUser'/>
             <td><input type='submit' value='Modificar' /></td>
         </form>
-        <form method='post' action='index.php'>
-            <input type='hidden' name='do' value='" .$lugares["id"]. "'/>
+        <form method='post' action='confirm_delete_lugares'>
+            <input type='hidden' name='idLug' value='" .$lugares["id"]. "'/>
             <td><input type='submit' value='Eliminar' /></td>
         </tr>
         </form>";
@@ -62,8 +60,8 @@ echo "
             <th>Cartel</th>
         </tr>";
 
-foreach ($tablas["peliculas"] as $peliculas)
-    $img = '<input type="image" width="50" src="data:image/jpeg;base64,'.base64_encode($peliculas["cartel"]).'"/>';
+foreach ($tablas["peliculas"] as $peliculas) {
+    $img = '<img width="50" src="data:image/jpeg;base64,'.base64_encode($peliculas["cartel"]).'"/>';
     echo " 
             <form method='post' action='index.php'>
             <tr>
@@ -71,24 +69,22 @@ foreach ($tablas["peliculas"] as $peliculas)
                 <td><input type='text' name='anioPel' value='" .$peliculas["anio"]. "' /></td>
                 <td><input type='text' name='paisPel' value='" .$peliculas["pais"]. "' /></td>
                 <td align='center' >$img</td>
-                <input type='hidden' name='idusuario' value=''/>
-                <input type='hidden' name='do' value='modUser'/>
                 <td><input type='submit' value='Modificar' /></td>
                 </form>
-            <form method='post' action='index.php'>
-                <input type='hidden' name='do' value='" .$peliculas["id"]. "'/>
+            <form method='post' action='confirm_delete_peliculas'>
+                <input type='hidden' name='idPel' value='" .$peliculas["id"]. "'/>
                 <td><input type='submit' value='Eliminar' /></td>
             </tr>
             </form>";
+    }
         
 echo "  
-        <form method='post' action='index.php'>   
+        <form method='post' action='confirm_insert_peliculas'>   
         <tr>
             <td><input type='text' name='titInsPel' /></td>
             <td><input type='text' name='anioInsPel' /></td>
             <td><input type='text' name='paisInsPel' /></td>
             <td><input type='file' name='cartInsPel' /></td>
-            <input type='hidden' name='do' value='insertUser'/>
             <td><input type='submit' value='Insertar' /></td>
         </tr>
         </form>
@@ -116,12 +112,10 @@ foreach ($tablas["localizaciones"] as $localizaciones)
                 <td align='center'>$img</td>
                 <td><input type='text' name='lugLoc' value='" .$localizaciones["id_lugar"]. "' /></td>
                 <td><input type='text' name='pelLoc' value='" .$localizaciones["id_pelicula"]. "' /></td>
-                <input type='hidden' name='idusuario' value=''/>
-                <input type='hidden' name='do' value='modUser'/>
                 <td><input type='submit' value='Modificar' /></td>
                 </form>
-            <form method='post' action='index.php'>
-                <input type='hidden' name='do' value='" .$localizaciones["id"]. "'/>
+            <form method='post' action='confirm_delete_localizaciones'>
+                <input type='hidden' name='idLoc' value='" .$localizaciones["id"]. "'/>
                 <td><input type='submit' value='Eliminar' /></td>
             </tr>
             </form>";

@@ -88,6 +88,54 @@
             }
         }
         
+        function confirm_delete_lugares() {
+            $id = $_REQUEST["idLug"];
+            $num = $this->usuarios->delete_lugar($id);
+            if ($num != 0) {
+                $data["tablas"] = $this->usuarios->get_tablas();
+                $data["nombre_vista"] = "menu";
+                $this->load->view("plantilla", $data);
+            }
+            else {
+                $data["nombre_vista"] = "menu";
+                $data["tablas"] = $this->usuarios->get_tablas();
+                $data["error"] = "Datos introducidos incorrectos";
+                $this->load->view("plantilla", $data);
+            }
+        }
+        
+        function confirm_delete_peliculas() {
+            $id = $_REQUEST["idPel"];
+            $num = $this->usuarios->delete_pelicula($id);
+            if ($num != 0) {
+                $data["tablas"] = $this->usuarios->get_tablas();
+                $data["nombre_vista"] = "menu";
+                $this->load->view("plantilla", $data);
+            }
+            else {
+                $data["nombre_vista"] = "menu";
+                $data["tablas"] = $this->usuarios->get_tablas();
+                $data["error"] = "Datos introducidos incorrectos";
+                $this->load->view("plantilla", $data);
+            }
+        }
+        
+        function confirm_delete_localizaciones() {
+            $id = $_REQUEST["idLoc"];
+            $num = $this->usuarios->delete_localizacion($id);
+            if ($num != 0) {
+                $data["tablas"] = $this->usuarios->get_tablas();
+                $data["nombre_vista"] = "menu";
+                $this->load->view("plantilla", $data);
+            }
+            else {
+                $data["nombre_vista"] = "menu";
+                $data["tablas"] = $this->usuarios->get_tablas();
+                $data["error"] = "Datos introducidos incorrectos";
+                $this->load->view("plantilla", $data);
+            }
+        }
+        
         function cerrar_sesion() {
             $this->session->destroy();
         }

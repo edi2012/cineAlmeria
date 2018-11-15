@@ -55,4 +55,22 @@
             
             return $this->db->affected_rows();
         }
+        
+        function delete_lugar($id) {
+            $this->db->delete('lugares', array('id' => $id));
+            
+            return $this->db->affected_rows();
+        }
+        
+        function delete_pelicula($id) {
+            $this->db->delete('peliculas', array('id' => $id));
+            
+            return $this->db->affected_rows();
+        }
+        
+        function delete_localizacion($id) {
+            $this->db->delete('localizaciones', array('id' => $id));
+            
+            return $this->db->affected_rows();
+        }
     }
