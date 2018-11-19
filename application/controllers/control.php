@@ -53,8 +53,6 @@
         function confirm_insert_peliculas() {
             $config['upload_path']          = './uploads/';
             $config['allowed_types']        = 'gif|jpg|png';
-            $config['max_width']            = 1024;
-            $config['max_height']           = 768;
             $this->load->library('upload' ,$config);
             $this->upload->do_upload('userfile');
             $titulo = $_REQUEST["titInsPel"];
@@ -78,8 +76,6 @@
         function confirm_insert_localizaciones() {
             $config['upload_path']          = './uploads/';
             $config['allowed_types']        = 'gif|jpg|png';
-            $config['max_width']            = 1024;
-            $config['max_height']           = 768;
             $this->load->library('upload' ,$config);
             $this->upload->do_upload('userfile');
             $descripcion = $_REQUEST["descInsLoc"];
