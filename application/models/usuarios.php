@@ -11,6 +11,15 @@
             return $r;
         }
         
+        function get_usuario() {
+            $resul = $this->db->query("SELECT nombre FROM usuarios");
+            $r = array();
+            foreach ($resul->result_array() as $fila) {
+                $r[] = $fila;
+            }
+            return $r;
+        }
+        
         function get_tablas() {
             $r1 = $this->db->query("SELECT * FROM lugares");
             $resul["lugares"] = array();

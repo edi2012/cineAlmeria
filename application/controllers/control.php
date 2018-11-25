@@ -144,6 +144,27 @@
             }
         }
         
+        function test($q) {
+            // Array with names
+            $usuarios = $this->usuarios->get_usuario();
+
+            // get the q parameter from URL
+            $hint = "";
+
+            // lookup all hints from array if $q is different from ""
+            if ($q != "") {
+                foreach($usuarios as $name) {
+                        if ($q == $name["nombre"]) {
+                            $hint = "Ese usuario existe!";
+                        } else {
+                            $hint = "Ese usuario no existe!";
+                        }
+                }
+            }
+            // Output "no suggestion" if no hint was found or output correct values
+            echo $hint;
+        }
+        
         function cerrar_sesion() {
             $this->session->destroy();
         }
